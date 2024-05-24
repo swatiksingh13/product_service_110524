@@ -38,7 +38,7 @@ public interface ProductRepository extends JpaRepository<Product, Long>  {
     @Query(value = "Select * from product as p where p.id = :id" , nativeQuery = true)
     ProductProjection someNativeSql1(Long id);
 
-    @Query(value = "Select * from product as p where p.id = :id" , nativeQuery = true)
+    @Query(value = "Select * from product as p where id = :id" , nativeQuery = true)
     ProductProjection someNativeSql2(Long id);
 
 }
