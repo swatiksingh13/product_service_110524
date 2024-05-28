@@ -73,11 +73,11 @@ class ProductService110524ApplicationTests {
         Product product = productRepository.someNativeSql(2L);
         System.out.println( product.getTitle());
 
-        ProductProjection product1= productRepository.someNativeSql1(8L);
+        ProductProjection product1= productRepository.someNativeSql1(5L);
         System.out.println( product1.getTitle() + " " + product1.getId() + " " + product1.getPrice());
 
 
-        ProductProjection product2 = productRepository.someNativeSql2(7L);
+        ProductProjection product2 = productRepository.someNativeSql2(4L);
         System.out.println( product2.getTitle());
         System.out.println(product2.getId());
     }

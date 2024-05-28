@@ -12,6 +12,7 @@ public class ApplicationConfiguration {
     public RestTemplate createRestTemplate() {
         return new RestTemplate();
     }
+
     @Bean
     public ModelMapper createModelMapper() {
         return new ModelMapper();
