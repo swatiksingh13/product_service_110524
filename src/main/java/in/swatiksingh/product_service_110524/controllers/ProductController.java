@@ -8,6 +8,7 @@ import in.swatiksingh.product_service_110524.models.Product;
 import in.swatiksingh.product_service_110524.services.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +47,18 @@ public class ProductController {
         return productResponseDtos;
     }
 
+   @GetMapping("/productsPages")
+   public ResponseEntity<List<ProductResponseDto>> getAllProducts(
+           @RequestParam("pageNumber") int pageNumber,
+           @RequestParam("pageSize") int pageSize,
+           @RequestParam("sortBy") String sortParam) {
+       Page<Product> products = productService.getAllProducts(pageNumber, pageSize, sortParam);
+       List<ProductResponseDto> productResponseDtos = new ArrayList<>();
+       products.forEach(product -> productResponseDtos.add(convertToProductResponseDto(product)));
+       return new ResponseEntity<>(productResponseDtos, HttpStatus.OK);
+   }
+
+
     @PostMapping("/products")
     public ResponseEntity<ProductResponseDto> createNewProduct(@RequestBody ProductRequestDto productRequestDto){
         Product product = productService.addProduct(
@@ -57,7 +70,7 @@ public class ProductController {
         );
        // return convertToProductResponseDto(product);
         ProductResponseDto productResponseDto = convertToProductResponseDto(product);
-        return new ResponseEntity<>(productResponseDto, HttpStatus.CREATED);
+        return new ResponseEntity<> (productResponseDto, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/products/{id}")

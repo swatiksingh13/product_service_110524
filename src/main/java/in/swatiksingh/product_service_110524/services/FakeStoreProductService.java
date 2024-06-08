@@ -4,6 +4,7 @@ import in.swatiksingh.product_service_110524.dtos.FakeStoreDto;
 import in.swatiksingh.product_service_110524.dtos.ProductResponseDto;
 import in.swatiksingh.product_service_110524.exceptions.ProductNotFoundException;
 import in.swatiksingh.product_service_110524.models.Product;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.RequestEntity;
@@ -51,7 +52,10 @@ public class FakeStoreProductService implements ProductService {
         }
         return products;
     }
-
+    @Override
+    public Page<Product> getAllProducts(int pageNumber, int pageSize, String sortParam) {
+        return null;
+    }
     @Override
     public Product addProduct(
             String title,
@@ -176,4 +180,6 @@ public class FakeStoreProductService implements ProductService {
         }
         return response.toProduct();
     }
+
+
 }
