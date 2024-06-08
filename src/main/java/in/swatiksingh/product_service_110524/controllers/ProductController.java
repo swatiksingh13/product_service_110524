@@ -52,12 +52,12 @@ public class ProductController {
            @RequestParam("pageNumber") int pageNumber,
            @RequestParam("pageSize") int pageSize,
            @RequestParam("sortBy") String sortParam) {
+
        Page<Product> products = productService.getAllProducts(pageNumber, pageSize, sortParam);
        List<ProductResponseDto> productResponseDtos = new ArrayList<>();
        products.forEach(product -> productResponseDtos.add(convertToProductResponseDto(product)));
        return new ResponseEntity<>(productResponseDtos, HttpStatus.OK);
    }
-
 
     @PostMapping("/products")
     public ResponseEntity<ProductResponseDto> createNewProduct(@RequestBody ProductRequestDto productRequestDto){

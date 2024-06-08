@@ -52,7 +52,6 @@ public class SelfProductService implements ProductService {
                         Sort.by(sortParam).descending()));
     }
 
-
     @Override
     public Product addProduct(String title, String description, String imageUrl,
                               String category, double price) {

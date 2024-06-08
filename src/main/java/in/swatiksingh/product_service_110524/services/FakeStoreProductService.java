@@ -52,10 +52,12 @@ public class FakeStoreProductService implements ProductService {
         }
         return products;
     }
+
     @Override
     public Page<Product> getAllProducts(int pageNumber, int pageSize, String sortParam) {
         return null;
     }
+
     @Override
     public Product addProduct(
             String title,
